@@ -1,0 +1,47 @@
+/* LeftPanel Styles */
+.left-panel {
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 100vh;
+}
+
+/* RightPanel Styles */
+.right-panel {
+    background-color: #ffffff;
+    padding: 20px;
+    height: 100vh;
+}
+
+.complete-button {
+    position: fixed;
+    bottom: 10vh;
+    right: 10vh;
+}
+
+/* Media Query for screens with max width 768px (Mobile) */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .side-panel {
+        width: 100%;
+        height: 30vh;
+    }
+}
+
+/* Media Query for screens with min width 769px (Desktop) */
+@media (min-width: 769px) {
+    .main-container {
+        flex-direction: row;
+        /* Keep left-right layout */
+        align-items: stretch;
+    }
+
+    .side-panel {
+        width: 50%;
+        /* Split the screen in half */
+        height: 100vh;
+    }
+}

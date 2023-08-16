@@ -1,0 +1,17 @@
+/* custom-nprogress.css */
+.nprogress {
+    pointer-events: none;
+    /* 防止进度条阻挡页面交互 */
+}
+
+.nprogress .bar {
+    background: #ff5733;
+    /* 自定义进度条背景颜色 */
+    height: 3px;
+    /* 进度条高度 */
+}
+
+.nprogress .peg {
+    box-shadow: 0 0 10px #ff5733, 0 0 5px #ff5733;
+    /* 自定义加载进度的前景样式 */
+}

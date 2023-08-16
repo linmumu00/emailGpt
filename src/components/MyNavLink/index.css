@@ -1,0 +1,14 @@
+/* styles.css */
+.blue-link {
+    text-decoration: none;
+    color: #0074D9;
+    /* 蓝色 */
+    font-weight: bold;
+    transition: color 0.3s;
+    /* 添加颜色渐变效果 */
+}
+
+.blue-link:hover {
+    color: #0056b3;
+    /* 鼠标悬停时的颜色 */
+}
