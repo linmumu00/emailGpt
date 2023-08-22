@@ -116,8 +116,8 @@ export default function Edit() {
                     getAuthToken: function (callback) {
                         request('POST', 'https://plugins.stripo.email/api/v1/auth',
                             JSON.stringify({
-                                pluginId: '8c7519f3ecb74c7f9f530d2a0b25f6e9',
-                                secretKey: 'af162fa6c36e4601ad640ff907652eab'
+                                pluginId: '',
+                                secretKey: ''
                             }),
                             function (data) {
                                 callback(JSON.parse(data).token);
