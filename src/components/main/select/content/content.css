@@ -1,0 +1,79 @@
+/* LeftPanel Styles */
+.left-panel {
+    position: relative;
+    background-color: #ffffff;
+    padding: 20px 0 0 20px;
+    height: 100vh;
+}
+
+/* RightPanel Styles */
+.right-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9F9F9;
+    padding-top: 20px;
+    height: 100vh;
+}
+
+.back {
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    text-decoration: underline;
+    display: block;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.complete-button {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+}
+
+/* Media Query for screens with max width 768px (Mobile) */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right-panel {
+        display: none;
+    }
+}
+
+/* Media Query for screens with min width 769px (Desktop) */
+@media (min-width: 900px) {
+    .main-container {
+        flex-direction: row;
+        /* Keep left-right layout */
+        align-items: stretch;
+    }
+
+    .right-panel {
+        padding-top: 0;
+    }
+
+    .side-panel {
+        height: 100vh;
+    }
+}
+
+
+.left-panelcontentspan {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    color: rgba(42, 47, 48, .5);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 5vh;
+    margin-left: 5vh;
+    /* margin-bottom: 10vh; */
+}

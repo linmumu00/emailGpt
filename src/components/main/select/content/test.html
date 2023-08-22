@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 存储对象为 JSON 字符串
+        const contentObj = [{ "id": 1, "label": "name", "value": "" }, { "id": 2, "label": "decribe", "value": "" }, { "id": 3, "label": "feature1", "value": "" }, { "id": 4, "label": "feature2", "value": "" }, { "id": 5, "label": "feature3", "value": "" }, { "id": 6, "label": "isFormal", "value": "" }]
+
+        const contentStr = JSON.stringify(contentObj);
+        sessionStorage.setItem("content", contentStr);
+
+        // 从 JSON 字符串中解析对象
+        const storedContentStr = sessionStorage.getItem("content");
+        console.log(storedContentStr);
+        const parsedContent = JSON.parse(storedContentStr);
+
+        console.log(parsedContent); // { id: 1, label: 'name', value: 'John' }
+
+    </script>
+</body>
+
+</html>

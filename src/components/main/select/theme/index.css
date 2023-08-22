@@ -1,0 +1,102 @@
+/* LeftPanel Styles */
+.left-panel {
+    position: relative;
+    background-color: #ffffff;
+    padding: 20px 0 0 20px;
+    height: 100vh;
+    margin-top: 8vh;
+}
+
+.left-panel h1 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.left-panelspan {
+    display: block;
+    background: linear-gradient(to right, #4285f4, #34a853);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.themebox {
+    background-color: rgba(34, 112, 226, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    max-height: 100%;
+    width: 25vh;
+    height: 6vh;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+/* RightPanel Styles */
+.right-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9F9F9;
+    padding-top: 20px;
+    height: 100vh;
+}
+
+.back {
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: auto;
+    text-decoration: underline;
+    display: block;
+    cursor: pointer;
+}
+
+
+
+/* Media Query for screens with max width 768px (Mobile) */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}
+
+/* Media Query for screens with min width 769px (Desktop) */
+@media (min-width: 900px) {
+    .main-container {
+        flex-direction: row;
+        /* Keep left-right layout */
+        align-items: stretch;
+    }
+
+    .right-panel {
+        padding-top: 0;
+    }
+
+    .side-panel {
+        height: 100vh;
+    }
+}
+
+
+.compeletedbutton {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    width: 25vh;
+    bottom: 15vh;
+}
