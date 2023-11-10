@@ -1,58 +1,59 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import './index.css';
 import notifications from "./notifications";
 
 
 export default function Edit() {
 
-    const [editHtml, setEditHtml] = useState('')
+    // const [editHtml, setEditHtml] = useState('')
     // console.log(imageurl, businessType);
+    const imageurl = sessionStorage.getItem("themeId")
 
-    useEffect(() => {
-        const imageurl = sessionStorage.getItem("themeId")
-        const contentStr = sessionStorage.getItem("content")
-        const content = JSON.parse(contentStr)
-        const businessType = sessionStorage.getItem("businessType")
-        async function makeRequest() {
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2OTI1ODk5NjUsImV4cCI6MTY5Mjg0OTE2NSwiaXNzIjoiY2hhdCJ9.DxWRTOn3zhN5jLbAKwOuJHZEGHY8eNwHsuJMUflgsOY";
-            const apiUrl = 'https://api.workgpt.us/api/email_design/design'
-            // const apiUrl = '';
-            const headers = {
-                'Authorization': `${token}`,
-                'Content-Type': 'application/json',
-            };
+    // useEffect(() => {
 
-            const body = {
-                "BusinessType": businessType,
-                "name": content[0].value,
-                "decribe": content[1].value,
-                "feature1": content[2].value,
-                "feature2": content[3].value,
-                "feature3": content[4].value,
-                "isFormal": content[5].value,
-                "ThemeUrl": `${imageurl}.html`
-            };
+    //     const contentStr = sessionStorage.getItem("content")
+    //     const content = JSON.parse(contentStr)
+    //     const businessType = sessionStorage.getItem("businessType")
+    //     async function makeRequest() {
+    //         const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2OTI1ODk5NjUsImV4cCI6MTY5Mjg0OTE2NSwiaXNzIjoiY2hhdCJ9.DxWRTOn3zhN5jLbAKwOuJHZEGHY8eNwHsuJMUflgsOY";
+    //         const apiUrl = 'https://api.workgpt.us/api/email_design/design'
+    //         // const apiUrl = '';
+    //         const headers = {
+    //             'Authorization': `${token}`,
+    //             'Content-Type': 'application/json',
+    //         };
 
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: headers,
-                    body: JSON.stringify(body)
-                });
+    //         const body = {
+    //             "BusinessType": businessType,
+    //             "name": content[0].value,
+    //             "decribe": content[1].value,
+    //             "feature1": content[2].value,
+    //             "feature2": content[3].value,
+    //             "feature3": content[4].value,
+    //             "isFormal": content[5].value,
+    //             "ThemeUrl": `${imageurl}.html`
+    //         };
 
-                if (response.ok) {
-                    const responseData = await response.json();
-                    setEditHtml(responseData.data.html)
-                } else {
-                    console.error('Request failed with status:', response.status);
-                }
-            } catch (error) {
-                console.error('An error occurred:', error);
-            }
-        }
+    //         try {
+    //             const response = await fetch(apiUrl, {
+    //                 method: 'POST',
+    //                 headers: headers,
+    //                 body: JSON.stringify(body)
+    //             });
 
-        makeRequest();
-    }, []);
+    //             if (response.ok) {
+    //                 const responseData = await response.json();
+    //                 setEditHtml(responseData.data.html)
+    //             } else {
+    //                 console.error('Request failed with status:', response.status);
+    //             }
+    //         } catch (error) {
+    //             console.error('An error occurred:', error);
+    //         }
+    //     }
+
+    //     makeRequest();
+    // }, []);
 
     useEffect(() => {
         async function request(method, url, data, callback) {
@@ -75,9 +76,19 @@ export default function Edit() {
         //the first url addresses will obtaine from the back-end gpt
         function loadDemoTemplate(editHtml, callback) {
             request('GET', 'https://raw.githubusercontent.com/linmumu00/stripo-Templates/master/test1.css', null, function (css) {
-                callback({ html: editHtml, css: css });
+                request('GET', editHtml + '.html', null, function (html) {
+                    console.log(html);
+                    callback({ html: html, css: css });
+                });
             });
         }
+        // function loadDemoTemplate(editHtml, callback) {
+        //     request('GET', editHtml + '.html', null, function (html) {
+        //         request('GET', 'https://raw.githubusercontent.com/linmumu00/stripo-Templates/master/test1.css', null, function (css) {
+        //             callback({ html: html, css: css });
+        //         });
+        //     });
+        // }
         function initPlugin(template) {
             const apiRequestData = {
                 emailId: 123
@@ -127,9 +138,9 @@ export default function Edit() {
             };
             document.body.appendChild(script);
         }
-        loadDemoTemplate(editHtml, initPlugin);
+        loadDemoTemplate(imageurl, initPlugin);
         console.log('finish');
-    }, [editHtml])
+    }, [imageurl])
 
     return (
         <div>
